@@ -5,7 +5,7 @@
       <p class="text-h2">{{ flaming }}</p>
       <div class="text-right pr-12">でした</div>
     </v-container>
-    {{ text }}
+    <v-card class="text mx-16 my-5 pa-5 text-left">{{ text }}</v-card>
     <v-btn
       color="twitter"
       class="white--text"
@@ -37,5 +37,8 @@ export default {
 </script>
 
 <style scoped>
-
+.text {
+  white-space: pre-wrap;
+  word-wrap:break-word;
+}
 </style>
