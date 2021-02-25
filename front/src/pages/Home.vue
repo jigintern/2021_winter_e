@@ -1,7 +1,13 @@
 <template>
   <v-container class="text-center pa-12">
-    <p class="text-h2">App Name</p>
+    <v-container class="pb-6">
+      <p class="text-h2">App Name</p>
+    </v-container>
+    <v-container>
+      descriptiondescriptiondescription
+    </v-container>
     <v-textarea
+      label="ここにテキストを入力してください"
       v-model="text"
     ></v-textarea>
     <v-btn
@@ -23,7 +29,8 @@ export default {
   },
   methods: {
     onClick () {
-      this.$router.push({ name: "result", params: { text: this.text}});
+      const flamingNumber = 1;
+      this.$router.push({ name: "result", params: { text: this.text, flaming: flamingNumber}});
     }
   }
 }
