@@ -20,18 +20,15 @@
 <script>
 export default {
   name: "Result",
-  props: {
-    text: String,
-    flaming: Number,
-  },
   data() {
     return {
-      
+      flaming: this.$store.state.flamingNumber,
+      text: this.$store.state.text,
     }
   },
   methods: {
     tweet() {
-      const shareText = "このツイートの炎上度は" + this.flaming + "でした！";
+      const shareText = "このテキストの炎上度は" + this.flaming + "でした！ | " + this.text;
       const shareURL = "https://twitter.com/intent/tweet?text=" + shareText + "&url=" + "http://localhost:8080/";
       location.href = shareURL;
     }

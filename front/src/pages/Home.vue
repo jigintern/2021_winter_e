@@ -30,8 +30,10 @@ export default {
   },
   methods: {
     onClick () {
-      const flamingNumber = 1;
-      this.$router.push({ name: "result", params: { text: this.text, flaming: flamingNumber}});
+      const flamingNumber = 2;
+      this.$store.commit("changeText", this.text);
+      this.$store.commit("changeFlaming", flamingNumber);
+      this.$router.push({ name: "result" });
     }
   }
 }
