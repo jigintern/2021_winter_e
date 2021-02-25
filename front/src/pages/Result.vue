@@ -1,8 +1,9 @@
 <template>
   <v-container class="text-center pa-12">
-    <p class="text-left pl-12">flaming is ...</p>
     <v-container>
+      <div class="text-left pl-12">炎上度は...</div>
       <p class="text-h2">{{ flaming }}</p>
+      <div class="text-right pr-12">でした</div>
     </v-container>
     {{ text }}
     <v-btn

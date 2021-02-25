@@ -4,7 +4,7 @@
       <p class="text-h2">App Name</p>
     </v-container>
     <v-container>
-      descriptiondescriptiondescription
+      テキストを入力すると、炎上度が計れます。
     </v-container>
     <v-textarea
       label="ここにテキストを入力してください"
@@ -12,9 +12,10 @@
     ></v-textarea>
     <v-btn
       color="primary"
+      class="font-weight-medium"
       @click="onClick"
     >
-      to Result
+      炎上度を計測する
     </v-btn>
   </v-container>
 </template>
