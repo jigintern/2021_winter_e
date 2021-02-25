@@ -1,9 +1,12 @@
 <template>
   <v-container class="text-center pa-12">
     <p class="text-h2">App Name</p>
-    <v-textarea></v-textarea>
+    <v-textarea
+      v-model="text"
+    ></v-textarea>
     <v-btn
       color="primary"
+      @click="onClick"
     >
       to Result
     </v-btn>
@@ -15,12 +18,12 @@ export default {
   name: "Home",
   data() {
     return {
-
+      text: "",
     }
   },
   methods: {
-    onClickBtn () {
-
+    onClick () {
+      console.log(this.text);
     }
   }
 }
