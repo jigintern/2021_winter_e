@@ -2,8 +2,10 @@ name: github pages
 
 on:
   push:
+    workflow_dispatch:
     branches:
-      - master
+      - main
+    
 
 jobs:
   build-deploy:
@@ -15,6 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
+
+    - name: cd front dir
+      run: cd front
 
     - name: Cache dependencies
       uses: actions/cache@v1
