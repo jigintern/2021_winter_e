@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     onClick () {
-      console.log(this.text);
+      this.$router.push({ name: "result", params: { text: this.text}});
     }
   }
 }

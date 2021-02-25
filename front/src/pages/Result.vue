@@ -1,10 +1,20 @@
 <template>
-  <div></div>
+  <v-container>
+    {{ text }}
+  </v-container>
 </template>
 
 <script>
 export default {
-name: "Result"
+  name: "Result",
+  props: {
+    text: String,
+  },
+  data() {
+    return {
+      
+    }
+  }
 }
 </script>
 

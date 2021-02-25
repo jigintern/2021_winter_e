@@ -6,8 +6,17 @@ import Result from "@/pages/Result.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/result', component: Result },
+  {
+    name: 'home',
+    path: '/',
+    component: Home
+  },
+  {
+    name: 'result',
+    path: '/result',
+    component: Result,
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
