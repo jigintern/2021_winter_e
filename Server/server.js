@@ -43,30 +43,38 @@ const getEmotionsValue = async (sentenses, access_token) => {
 // json整形関数をつくる
 
 class MyServer extends Server {
-	api(path, req) {
+	async api(path, req) {
 		if (path == "/api/getEmotionsValue") {
-			//　定義
-			//　送られてきた文章
-			let sentense = req.sentense;
-			// let emotinalValue;
+			try {
+				//　定義
+				//　送られてきた文章
+				let sentense = req.sentense;
+				// let emotinalValue;
 
-			// 　（数値を取得）
-			// use API
+				// 　（数値を取得）
+				// use API
 
-			// 数値を返す
-			// return { value: emotinalValue };
+				// 数値を返す
+				// return { value: emotinalValue };
 
-			// 仮のresponse
-			// return { value: 1.0 };
+				// 仮のresponse
+				// return { value: 1.0 };
+				
+				const result = await getEmotionsValue(sentense, Deno.env.get("API_KEY"));
+
+				// result.then((data) => {
+				// 	console.log(data.documentSentiment.score)
+				// 	return {score:data.documentSentiment.score};
+				// }).catch((err) => {
+				// 	return console.log(err);
+				// });
+				return result
+
+			} catch (e) {
+				console.log(e)
+				return err.message
+			}
 			
-			const result = getEmotionsValue(sentense, Deno.env.get("API_KEY"));
-			// result.then((data) => {
-			// 	console.log(data.documentSentiment.score)
-			// 	return {score:data.documentSentiment.score};
-			// }).catch((err) => {
-			// 	return console.log(err);
-			// });
-			return result
 			
 		}
 		return { err: "not found" };
