@@ -1,10 +1,14 @@
 <template>
   <v-container class="text-center pa-12">
     <v-container class="pb-6">
-      <p class="text-h2">App Name</p>
+      <p class="text-h2">炎上チェッカー</p>
     </v-container>
     <v-container>
-      テキストを入力すると、炎上度が計れます。
+      テキストを入力すると、「炎上指数」が計れます。
+    </v-container>
+    <v-container>
+      <p class="text-h6 font-weight-bold">炎上指数とは？</p>
+      その文章がどれくらい炎上しやすそうかを数値化したものです。
     </v-container>
     <v-form
       ref="form"
@@ -22,7 +26,7 @@
         class="font-weight-medium"
         @click="onClick"
       >
-        炎上度を計測する
+        炎上指数を計測する
       </v-btn>
     </v-form>
   </v-container>
