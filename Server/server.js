@@ -1,4 +1,25 @@
 import { Server } from "https://js.sabae.cc/Server.js";
+import "https://deno.land/x/dotenv/load.ts";
+
+const getEmotionsValue = async (sentenses, access_token) => {
+	const url = String(`https://language.googleapis.com/v1/documents:analyzeSentiment?key=${access_token}`);
+	console.log("token", access_token);
+	const header = { "Content-Type": "application/json" };
+	const body = {
+		document: {
+			type: "PLAIN_TEXT",
+			language: "ja",
+			content: sentenses,
+		},
+		encodingType: "UTF8",
+	};
+	try {
+	const res = await fetch(url, { method: "POST", headers: header, body: JSON.stringify(body) });
+		return await res.json();
+	} catch (err) {
+		return err.message
+	}
+};
 
 /**
  * API
@@ -23,7 +44,6 @@ import { Server } from "https://js.sabae.cc/Server.js";
 
 class MyServer extends Server {
 	api(path, req) {
-		console.log("path", path);
 		if (path == "/api/getEmotionsValue") {
 			//　定義
 			//　送られてきた文章
@@ -38,11 +58,9 @@ class MyServer extends Server {
 
 			// 仮のresponse
 			// return { value: 1.0 };
-			console.log("val", process.env.API_KEY);
-			console.log(req);
-			const res = getEmotionsValue("asdfasdf", process.env.API_KEY);
-			console.log("hoge");
-			return res;
+			
+			const result = getEmotionsValue("asdfasdf", Deno.env.get("API_KEY"));
+			return result
 		}
 		return { err: "not found" };
 	}
