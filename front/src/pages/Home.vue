@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Home",
   data() {
@@ -53,10 +55,14 @@ export default {
   methods: {
     onClick () {
       if(!this.$refs.form.validate()) return;
-      const flamingNumber = 1;
-      this.$store.commit("changeText", this.text);
-      this.$store.commit("changeFlaming", flamingNumber);
-      this.$router.push({ name: "result" });
+      axios.get("https://e.intern.jigd.info/api/getEmotionsValue")
+      .then(res => {
+        const flamingNumber = res.data.documentSentiment.score;
+        this.$store.commit("changeText", this.text);
+        this.$store.commit("changeFlaming", flamingNumber);
+        this.$router.push({ name: "result" });
+      });
+      
     }
   }
 }
