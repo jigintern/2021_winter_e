@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     async onClick () {
-      if(!this.$refs.form.validate()) return;
+      if(!this.$refs.form.validate() || this.loading) return;
       this.loading = true;
 
       try {
