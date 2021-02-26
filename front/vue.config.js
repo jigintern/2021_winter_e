@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: './',
+  publicPath: '/2021_winter_e/',
   assetsDir: './',
   outputDir: '../docs',
   transpileDependencies: [
