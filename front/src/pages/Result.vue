@@ -14,6 +14,7 @@
       <v-icon class="mr-2">mdi-twitter</v-icon>
       ツイートする
     </v-btn>
+    
   </v-container>
 </template>
 
@@ -28,8 +29,8 @@ export default {
   },
   methods: {
     tweet() {
-      const shareText = "このテキストの炎上度は" + this.flaming + "でした！ | " + this.text;
-      const shareURL = "https://twitter.com/intent/tweet?text=" + shareText + "&url=" + "http://localhost:8080/";
+      const shareText = "このテキストの炎上度は" + this.flaming + "でした！" + this.text;
+      const shareURL = "https://twitter.com/intent/tweet?text=" + shareText + "&url=" + "https://jigintern.github.io/2021_winter_e";
       location.href = shareURL;
     }
   }

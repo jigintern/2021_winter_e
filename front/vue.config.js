@@ -1,7 +1,7 @@
 module.exports = {
-  publicPath: './',
+  publicPath: '/2021_winter_e/',
   assetsDir: './',
-  outputDir: 'docs',
+  outputDir: '../docs',
   transpileDependencies: [
     'vuetify'
   ]

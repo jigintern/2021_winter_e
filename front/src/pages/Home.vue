@@ -1,10 +1,19 @@
 <template>
   <v-container class="text-center pa-12">
     <v-container class="pb-6">
-      <p class="text-h2">App Name</p>
+      <v-img
+          :src="require('../assets/enjo-checker-title.png')"
+          class="my-3"
+          contain
+          height="250"
+        />
     </v-container>
     <v-container>
-      テキストを入力すると、炎上度が計れます。
+      テキストを入力すると、「<span class="font-weight-bold">炎上指数</span>」を計ることができます。
+    </v-container>
+    <v-container>
+      <p class="text-h6 font-weight-bold">炎上指数とは？</p>
+      その文章がどれくらい炎上しやすそうかを数値化したものです。
     </v-container>
     <v-form
       ref="form"
@@ -19,16 +28,36 @@
       ></v-textarea>
       <v-btn
         color="primary"
-        class="font-weight-medium"
+        class="font-weight-medium ma-2"
+        :loading="loading"
         @click="onClick"
       >
-        炎上度を計測する
+        炎上指数を計測する
       </v-btn>
+      <p
+        v-show="isError"
+        class="red--text"
+      >
+        エラーが発生しました。
+      </p>
     </v-form>
   </v-container>
 </template>
 
 <script>
+
+const fetchJSON = async (url, req) => {
+  const opt = req ? {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  } : null;
+  const res = await (await fetch(url, opt)).json();
+  return res;
+};
+
 export default {
   name: "Home",
   data() {
@@ -39,16 +68,26 @@ export default {
         v => !!v || 'テキストは必須です',
         v => (v && v.length <= 1000) || 'テキストは1000文字以内にしてください',
       ],
+      loading: false,
+      isError: false,
     }
   },
   methods: {
-    onClick () {
-      if(!this.$refs.form.validate()) return;
-      const flamingNumber = 1;
-      this.$store.commit("changeText", this.text);
-      this.$store.commit("changeFlaming", flamingNumber);
-      this.$router.push({ name: "result" });
-    }
+    async onClick () {
+      this.loading = true;
+
+      try {
+        const res = await fetchJSON("https://e.intern.jigd.info/api/getEmotionsValue", { sentense: this.text})
+        const flamingNumber = res.documentSentiment.score;
+        this.$store.commit("changeText", this.text);
+        this.$store.commit("changeFlaming", flamingNumber);
+        this.$router.push({ name: "result" });
+      } catch (e) {
+        console.log(e)
+        this.loading = false;
+        this.isError = true;
+      }
+    },
   }
 }
 </script>
