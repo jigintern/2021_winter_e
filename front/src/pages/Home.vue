@@ -1,10 +1,15 @@
 <template>
   <v-container class="text-center pa-12">
     <v-container class="pb-6">
-      <p class="text-h2">炎上チェッカー</p>
+      <v-img
+          :src="require('../assets/enjo-checker-title.png')"
+          class="my-3"
+          contain
+          height="250"
+        />
     </v-container>
     <v-container>
-      テキストを入力すると、「炎上指数」が計れます。
+      テキストを入力すると、「炎上指数」を計ることができます。
     </v-container>
     <v-container>
       <p class="text-h6 font-weight-bold">炎上指数とは？</p>
