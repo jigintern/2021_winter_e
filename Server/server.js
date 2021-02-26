@@ -47,7 +47,7 @@ class MyServer extends Server {
 		if (path == "/api/getEmotionsValue") {
 			//　定義
 			//　送られてきた文章
-			// let sentense = req.sentense;
+			let sentense = req.sentense;
 			// let emotinalValue;
 
 			// 　（数値を取得）
@@ -59,8 +59,15 @@ class MyServer extends Server {
 			// 仮のresponse
 			// return { value: 1.0 };
 			
-			const result = getEmotionsValue("asdfasdf", Deno.env.get("API_KEY"));
+			const result = getEmotionsValue(sentense, Deno.env.get("API_KEY"));
+			// result.then((data) => {
+			// 	console.log(data.documentSentiment.score)
+			// 	return {score:data.documentSentiment.score};
+			// }).catch((err) => {
+			// 	return console.log(err);
+			// });
 			return result
+			
 		}
 		return { err: "not found" };
 	}

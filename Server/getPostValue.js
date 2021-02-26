@@ -32,8 +32,9 @@ getEmotionsValue("asdf", Deno.env.get("API_KEY"))
 
 // console.log(getEmotionsValue("asdfasdf", Deno.env.get("API_KEY")));
 
-const result = getEmotionsValue("asdfasdf", Deno.env.get("API_KEY"));
-console.log("result", result);
+// const result = await getEmotionsValue("asdfasdf", Deno.env.get("API_KEY"));
+// console.log('-------')
+// console.log("result", result.documentSentiment.score);
 
 // getEmotionsValue("asdfasdf", Deno.env.get("API_KEY")).then((result) => {
 // 	console.log(result);
