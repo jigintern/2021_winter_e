@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     async onClick () {
-      if(!this.$refs.form.validate() || this.loading) return;
       this.loading = true;
 
       try {
@@ -84,6 +83,7 @@ export default {
         this.$store.commit("changeFlaming", flamingNumber);
         this.$router.push({ name: "result" });
       } catch (e) {
+        console.log(e)
         this.loading = false;
         this.isError = true;
       }
