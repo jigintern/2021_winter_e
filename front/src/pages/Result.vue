@@ -1,7 +1,7 @@
 <template>
   <v-container class="text-center pa-12">
     <v-container>
-      <div class="text-left pl-12">炎上度は...</div>
+      <div class="text-left pl-12">炎上指数は...</div>
       <p class="text-h2">{{ flaming }}</p>
       <div class="text-right pr-12">でした</div>
     </v-container>
@@ -29,8 +29,11 @@ export default {
   },
   methods: {
     tweet() {
-      const shareText = "このテキストの炎上度は" + this.flaming + "でした！" + this.text;
-      const shareURL = "https://twitter.com/intent/tweet?text=" + shareText + "&url=" + "https://jigintern.github.io/2021_winter_e";
+      const url = document.location.toString();
+      console.log(url);
+      const weburl = url.substring(0, url.lastIndexOf("/"));
+      const shareText = "このテキストの炎上指数は" + this.flaming + "でした！" + this.text;
+      const shareURL = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + weburl;
       location.href = shareURL;
     }
   }

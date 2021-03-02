@@ -1,4 +1,4 @@
-<template>
+ <template>
   <v-container class="text-center pa-12">
     <v-container class="pb-6">
       <v-img
@@ -77,8 +77,9 @@ export default {
       this.loading = true;
 
       try {
-        const res = await fetchJSON("https://e.intern.jigd.info/api/getEmotionsValue", { sentense: this.text})
-        const flamingNumber = res.documentSentiment.score;
+        const apibase = "http://localhost:8001/"; // for develop
+        //const apibase = ""; // for deploy
+        const flamingNumber = await fetchJSON(apibase + "api/getEmotionsValue", { sentense: this.text })
         this.$store.commit("changeText", this.text);
         this.$store.commit("changeFlaming", flamingNumber);
         this.$router.push({ name: "result" });
