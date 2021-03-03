@@ -21,6 +21,9 @@
 <script>
 export default {
   name: "Result",
+  metaInfo: {
+    title: '結果'
+  },
   data() {
     return {
       flaming: this.$store.state.flamingNumber,
