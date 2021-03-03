@@ -1,9 +1,15 @@
 module.exports = {
-  publicPath: '/2021_winter_e/',
+  publicPath: '/',
   assetsDir: './',
-  outputDir: '../docs',
+  outputDir: '../Server/static',
   transpileDependencies: [
     'vuetify'
-  ]
+  ],
+  pages: {
+    index: {
+      entry: "src/main.js",
+      title: "炎上チェッカー"
+    }
+  }
 }
-  
+
