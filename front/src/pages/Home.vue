@@ -60,6 +60,9 @@ const fetchJSON = async (url, req) => {
 
 export default {
   name: "Home",
+  metaInfo: {
+    title: '炎上チェッカー'
+  },
   data() {
     return {
       valid: true,
